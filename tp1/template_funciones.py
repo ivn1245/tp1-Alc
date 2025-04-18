@@ -1,3 +1,6 @@
+import numpy as np
+import scipy
+
 def construye_adyacencia(D,m): 
     # Función que construye la matriz de adyacencia del grafo de museos
     # D matriz de distancias, m cantidad de links por nodo
