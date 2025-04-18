@@ -13,6 +13,11 @@ def construye_adyacencia(D,m):
     np.fill_diagonal(A,0) # Borramos diagonal para eliminar autolinks
     return(A)
 
+
+dist=[[0,1,4,2],[1,0,3,8],[4,3,0,8],[2,8,8,0]]
+distancia=np.asarray(dist)
+print(construye_adyacencia(distancia,2))
+
 def calculaLU(matriz):
     # matriz es una matriz de NxN
     lista_de_triangulacion=[]
@@ -62,5 +67,5 @@ def calcula_B(C,cantidad_de_visitas):
     # Retorna:Una matriz B que vincula la cantidad de visitas w con la cantidad de primeras visitas v
     B = np.eye(C.shape[0])
     for i in range(cantidad_de_visitas-1):
-        # Sumamos las matrices de transición para cada cantidad de pasos
+        True# Sumamos las matrices de transición para cada cantidad de pasos
     return B

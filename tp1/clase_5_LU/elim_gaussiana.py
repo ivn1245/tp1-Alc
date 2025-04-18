@@ -6,17 +6,29 @@ Eliminacion Gausianna
 import numpy as np
 
 def elim_gaussiana(A):
+    U=A.copy
     cant_op = 0
     m=A.shape[0]
     n=A.shape[1]
-    Ac = A.copy()
+    res=[]
     
     if m!=n:
         print('Matriz no cuadrada')
         return
     
     ## desde aqui -- CODIGO A COMPLETAR
-
+    L = np.eye(n,n)
+    for j in range (0, n-1):
+        Uj=U[j]
+        Ujj=Uj[j]
+        for i in range (j+1,n):
+            coef= U[i][j] / Ujj
+            L[i][j] = coef
+            for k in range (n):
+                U[i][k]= U[i][k] - (coef * Uj[k])
+    res.append(L)
+    res.append(U)
+    return res
 
 
 
