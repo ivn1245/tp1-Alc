@@ -19,13 +19,11 @@ def elim_gaussiana(A):
     ## desde aqui -- CODIGO A COMPLETAR
     L = np.eye(n,n)
     for j in range (0, n-1):
-        Uj=U[j]
-        Ujj=Uj[j]
         for i in range (j+1,n):
-            coef= U[i][j] / Ujj
+            coef= U[i][j] / U[j][j]
             L[i][j] = coef
             for k in range (n):
-                U[i][k]= U[i][k] - (coef * Uj[k])
+                U[i][k]= U[i][k] - (coef * U[j][k])
     res.append(L)
     res.append(U)
     return res
