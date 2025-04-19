@@ -47,10 +47,11 @@ def calcula_pagerank(A,alfa):
     # d: coeficientes de damping
     # Retorna: Un vector p con los coeficientes de page rank de cada museo
     C = calcula_matriz_C(A)
-    N = ... # Obtenemos el número de museos N a partir de la estructura de la matriz A
-    M = ...
+    N = len(A) # Obtenemos el número de museos N a partir de la estructura de la matriz A
+    M = (1-alfa)*C #primera parte de la ecuacion del pagerank
     L, U = calculaLU(M) # Calculamos descomposición LU a partir de C y d
-    b = ... # Vector de 1s, multiplicado por el coeficiente correspondiente usando d y N.
+    b = np.ones((1,N)) # Vector de 1s, multiplicado por el coeficiente correspondiente usando d y N.
+    b = (alfa/N)*b
     Up = scipy.linalg.solve_triangular(L,b,lower=True) # Primera inversión usando L
     p = scipy.linalg.solve_triangular(U,Up) # Segunda inversión usando U
     return p
