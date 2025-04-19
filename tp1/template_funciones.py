@@ -29,8 +29,15 @@ def calcula_matriz_C(A):
     # Función para calcular la matriz de trancisiones C
     # A: Matriz de adyacencia
     # Retorna la matriz C
-    Kinv = ... # Calcula inversa de la matriz K, que tiene en su diagonal la suma por filas de A
-    C = ... # Calcula C multiplicando Kinv y A
+    dimA=len(A)
+    Kinv=np.zeros((dimA,dimA))     # Calcula inversa de la matriz K, que tiene en su diagonal la suma por filas de A
+    cords=0
+    for fila in A:
+        cant_conexiones=0
+        for i in range (dimA-1):
+            cant_conexiones+=fila[i]
+        Kinv[cords][cords]=1/cant_conexiones
+    C = Kinv @ (np.transpose(A)) # Calcula C multiplicando Kinv y A
     return C
 
     
