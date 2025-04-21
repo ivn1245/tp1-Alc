@@ -41,9 +41,17 @@ def calculaLU(matriz):
     res.append(U)
     return res
 
-
-    # Retorna la factorización LU a través de una lista con dos matrices L y U de NxN.
+# Retorna la factorización LU a través de una lista con dos matrices L y U de NxN.
     # Completar! Have fun
+
+
+def calcular_inversa(A):  #calcula la inversa con la implementacion de LU
+    dimA= np.eye(A.shape[0])
+    L,U=calculaLU(A)
+    I=np.identity(dimA)
+    primer_sistema= scipy.linalg.solve_triangular(L,I)
+    matriz_inversa= scipy.linalg.solve_triangular(U,primer_sistema)
+    return matriz_inversa
 
 def calcula_matriz_C(A): 
     # Función para calcular la matriz de trancisiones C
@@ -82,12 +90,13 @@ def calcula_matriz_C_continua(D):
     # Retorna la matriz C en versión continua
     D = D.copy()
     F = 1/D
+    # F = calcular_inversa(D)
 
     A=construye_adyacencia(D,3)
     matriz_continua=np.zeros(len(A),len(A))
     for i in range (len(A)):
         for j in range (len(A)):
-            if A[i][j]!=1:
+            if (A[i][j]!=1):
                 matriz_continua[i][j]= A[i][j] + F[i][j]
             else:
                 matriz_continua[i][j]=1
