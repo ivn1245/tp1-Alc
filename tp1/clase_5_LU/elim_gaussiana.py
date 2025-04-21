@@ -6,8 +6,7 @@ Eliminacion Gausianna
 import numpy as np
 
 def elim_gaussiana(A):
-    U=A.copy
-    cant_op = 0
+    U=A.copy()
     m=A.shape[0]
     n=A.shape[1]
     res=[]
@@ -34,10 +33,6 @@ def elim_gaussiana(A):
                 
     ## hasta aqui
             
-    L = np.tril(Ac,-1) + np.eye(A.shape[0]) 
-    U = np.triu(Ac)
-    
-    return L, U, cant_op
 
 
 def main():
